@@ -18,11 +18,20 @@ ShoppingList.create('beans', 2);
 ShoppingList.create('tomatoes', 3);
 ShoppingList.create('peppers', 4);
 
+Recipes.create(
+  'Gin and Tonic', ['3 ounces Gin', '4 ounces tonic water', '1 tbsp freshly squeezed lime']);
+Recipes.create(
+  'Moscow Mule', ['1 and 1/2 ounces vodka', '1/2 cup ginger beer', '1/2 ounce lime juice']);
+
 // when the root of this router is called with GET, return
 // all current ShoppingList items
 app.get('/shopping-list', (req, res) => {
   res.json(ShoppingList.get());
 });
+
+app.get('/recipes', (req, res) => {
+  res.json(Recipes.get());
+})
 
 app.listen(process.env.PORT || 8080, () => {
   console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
